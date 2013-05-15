@@ -21,28 +21,28 @@
 			    </f:facet>
 
 				<h:outputLabel for="txtCode" value="Code" />
-				<p:inputText id="txtCode" value="#{createCourseBean.course.code}" />
+				<p:inputText id="txtCode" value="#{manageCoursesBean.course.code}" />
 
 
 				<h:outputLabel for="txtName" value="Name" />
-				<p:inputText id="txtName" value="#{createCourseBean.course.name}" />
+				<p:inputText id="txtName" value="#{manageCoursesBean.course.name}" />
 
 				<h:outputLabel for="spinCapacity" value="Capacity" />
-				<p:spinner id="spinCapacity" 	value="#{createCourseBean.course.capacity}" />
+				<p:spinner id="spinCapacity" 	value="#{manageCoursesBean.course.capacity}" />
 
 
 				<h:outputLabel for="popupButtonStartDate" value="Start Date" />
-				<p:calendar value="#{createCourseBean.course.startDate}" id="popupButtonStartDate" showOn="button" />
+				<p:calendar value="#{manageCoursesBean.course.startDate}" id="popupButtonStartDate" showOn="button" />
 				
 				
 				<h:outputLabel for="popupButtonEndDate" value="End Date" />
-				<p:calendar value="#{createCourseBean.course.endDate}" id="popupButtonEndDate" showOn="button" />
+				<p:calendar value="#{manageCoursesBean.course.endDate}" id="popupButtonEndDate" showOn="button" />
 				
 				
 
 				<f:facet name="footer">
 					<p:commandButton ajax="false"
-						action="#{createCourseBean.saveCourse}" value="Create Course"
+						action="#{manageCoursesBean.saveCourse}" value="Create Course"
 						icon="ui-icon-check" />
 				</f:facet>
 			</p:panelGrid>

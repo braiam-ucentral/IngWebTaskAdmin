@@ -2,21 +2,23 @@ package taskadmin.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
-import javax.persistence.Persistence;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Entity
-public class Course implements Serializable{
+import taskadmin.util.PersistenceUtil;
 
-	//name code capacity start date end date teacher
-	
+@Entity
+public class Course implements Serializable {
+
+	// name code capacity start date end date teacher
+
 	/**
 	 * 
 	 */
@@ -31,84 +33,95 @@ public class Course implements Serializable{
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
 
-	
-	public Course(){}
-	
-	public Course(String name, String code, int capacity, Date startDate, Date endDate){
+	public Course() {
+	}
+
+	public Course(String name, String code, int capacity, Date startDate,
+			Date endDate) {
 		this.name = name;
 		this.code = code;
 		this.capacity = capacity;
 		this.startDate = startDate;
 		this.endDate = endDate;
-		
+
 	}
-	
+
+	public static List<Course> findAll() {
+		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+
+		@SuppressWarnings("unchecked")
+		List<Course> courseList = em.createQuery("SELECT c FROM Course c")
+				.getResultList();
+
+		em.close();
+		emf.close();
+		return courseList;
+	}
 
 	public void save() {
-		try{
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("TaskAdminPortletsPU");
+		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
-		
+
 		EntityTransaction tx = em.getTransaction();
-		
+
 		tx.begin();
 		em.persist(this);
 		tx.commit();
 
 		em.close();
 		emf.close();
-		System.out.println("Saved " + this.toString());
-		}catch(Exception e){
-			System.err.println(e.getMessage());
-		}
+	}
 
-		
+	public static void removeByCode(String code) {
+		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction tx = em.getTransaction();
+
+		tx.begin();
+		Course course = em.find(Course.class, code);
+		em.remove(course);
+		tx.commit();
+
+		em.close();
+		emf.close();
 	}
 
 	public String getName() {
 		return name;
 	}
 
-
 	public void setName(String name) {
 		this.name = name;
 	}
-
 
 	public String getCode() {
 		return code;
 	}
 
-
 	public void setCode(String code) {
 		this.code = code;
 	}
-
 
 	public int getCapacity() {
 		return capacity;
 	}
 
-
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-
 
 	public Date getStartDate() {
 		return startDate;
 	}
 
-
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-
 	public Date getEndDate() {
 		return endDate;
 	}
-
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
@@ -124,8 +137,4 @@ public class Course implements Serializable{
 		return sb.toString();
 	}
 
-	
-	
-	
-	
 }

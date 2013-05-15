@@ -16,7 +16,7 @@
 				action="create-course"
 				icon="ui-icon-plusthick"/>
 		
-			<p:dataTable var="course" value="#{adminCoursesBean.findAllCourses()}">
+			<p:dataTable var="course" value="#{manageCoursesBean.findAll()}">
 				<p:column headerText="Code">
 					<h:outputText value="#{course.code}" />
 				</p:column>
@@ -31,6 +31,16 @@
 				</p:column>
 				<p:column headerText="End Date">
 					<h:outputText value="#{course.endDate}" />
+				</p:column>
+				
+				<p:column headerText="Actions">
+					<p:commandButton value="Edit" ajax="false" action="edit-course" icon="ui-icon-pencil">
+						<f:param name="code" value="#{course.code}"/>
+					</p:commandButton>
+					
+					<p:commandButton action="#{manageCoursesBean.remove}" value="Remove" ajax="false" icon="ui-icon-trash">
+						<f:param name="code" value="#{course.code}"/>
+					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 		</h:form>
