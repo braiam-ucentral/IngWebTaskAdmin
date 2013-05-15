@@ -10,18 +10,20 @@
 
 		<h:form>
 			<h2>
-				<h:outputText value="Create Course" />
+		        <h:outputText value="Create Course" rendered="#{manageCoursesBean.mode eq 'new'}"/>
+		        <h:outputText value="Edit Course" rendered="#{manageCoursesBean.mode eq 'edit'}"/>
 			</h2>
 			
 			  
 			
 			<p:panelGrid columns="2">
 				<f:facet name="header"> 
-			        New Course Info
+			        <h:outputText value="New Course Info" rendered="#{manageCoursesBean.mode eq 'new'}"/>
+			        <h:outputText value="Course Info" rendered="#{manageCoursesBean.mode eq 'edit'}"/>
 			    </f:facet>
 
 				<h:outputLabel for="txtCode" value="Code" />
-				<p:inputText id="txtCode" value="#{manageCoursesBean.course.code}" />
+				<p:inputText id="txtCode" value="#{manageCoursesBean.course.code}" readonly="#{manageCoursesBean.mode eq 'edit'}"/>
 
 
 				<h:outputLabel for="txtName" value="Name" />
@@ -41,9 +43,19 @@
 				
 
 				<f:facet name="footer">
-					<p:commandButton ajax="false"
-						action="#{manageCoursesBean.saveCourse}" value="Create Course"
-						icon="ui-icon-check" />
+					<p:commandButton
+						ajax="false"
+						value="Create Course"
+						action="#{manageCoursesBean.saveCourse}"
+						icon="ui-icon-check"
+						rendered="#{manageCoursesBean.mode eq 'new'}"/>
+						
+					<p:commandButton
+						ajax="false"
+						value="Save Changes"
+						action="#{manageCoursesBean.saveCourse}"
+						icon="ui-icon-check"
+						rendered="#{manageCoursesBean.mode eq 'edit'}"/>
 				</f:facet>
 			</p:panelGrid>
 

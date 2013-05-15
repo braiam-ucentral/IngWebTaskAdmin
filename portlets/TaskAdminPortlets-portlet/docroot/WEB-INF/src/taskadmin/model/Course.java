@@ -46,6 +46,17 @@ public class Course implements Serializable {
 
 	}
 
+	public static Course findByCode(String code){
+		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+
+		Course course = em.find(Course.class, code);
+
+		em.close();
+		emf.close();
+		return course;		
+	}
+	
 	public static List<Course> findAll() {
 		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
@@ -58,6 +69,7 @@ public class Course implements Serializable {
 		emf.close();
 		return courseList;
 	}
+	
 
 	public void save() {
 		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
@@ -66,13 +78,15 @@ public class Course implements Serializable {
 		EntityTransaction tx = em.getTransaction();
 
 		tx.begin();
-		em.persist(this);
+		em.merge(this);
 		tx.commit();
 
 		em.close();
 		emf.close();
 	}
 
+	
+	
 	public static void removeByCode(String code) {
 		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();

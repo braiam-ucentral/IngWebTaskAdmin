@@ -5,18 +5,29 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 
 import taskadmin.model.Course;
 
 @ManagedBean
 @RequestScoped
 public class ManageCoursesBean {
-
+	
 	@ManagedProperty(value="#{param.code}")
 	private String code = null;
 	
+	private String mode = "new";
+	
 	private Course course = new Course();
 	
+	
+	public ManageCoursesBean() {
+		String code = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("code");
+		if(code!=null){
+			course = Course.findByCode(code);
+			mode = "edit";
+		}
+	}
 	
 
 	public List<Course> findAll(){
@@ -50,7 +61,18 @@ public class ManageCoursesBean {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+
+
+	public String getMode() {
+		return mode;
+	}
+
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
 	
+
 	
 	
 	
