@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13652676275000" configfile="/TaskAdminPortlets-portlet/docroot/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="views/adminCourses/adminCourses.xhtml" id="pf13653702380706" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" outlinks="pf13653702380707" inlinks="pf13653736240989" path="/views/adminCourses/adminCourses.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="views/adminCourses/createCourse.xhtml" id="pf13653702380708" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf13653736240989" inlinks="pf13653702380707" path="/views/adminCourses/createCourse.xhtml"/>
+  <links id="pf13653702380707" target="pf13653702380708" source="pf13653702380706" outcome="create-course"/>
+  <links id="pf13653736240989" target="pf13653702380706" source="pf13653702380708" outcome="success"/>
+</pageflow:Pageflow>
