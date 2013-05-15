@@ -5,4 +5,7 @@
 	<category name="Task Admin">
 		<portlet id="AdminCoursesPortlet"></portlet>
 	</category>
+	<category name="category.sample">
+		<portlet id="ManageTeachers"></portlet>
+	</category>
 </display>

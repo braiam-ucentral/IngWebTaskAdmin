@@ -28,7 +28,6 @@ public class ManageCoursesBean {
 			mode = "edit";
 		}
 	}
-	
 
 	public List<Course> findAll(){
 		return Course.findAll();
@@ -71,9 +70,5 @@ public class ManageCoursesBean {
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
-	
-
-	
-	
 	
 }
