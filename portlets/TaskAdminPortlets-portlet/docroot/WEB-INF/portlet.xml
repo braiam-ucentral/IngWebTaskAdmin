@@ -42,7 +42,7 @@
 		</portlet-class>
 		<init-param>
 			<name>javax.portlet.faces.defaultViewId.view</name>
-			<value>/views/manageteachers/portletViewMode.xhtml</value>
+			<value>/views/manageTeachers/manageTeachers.xhtml</value>
 		</init-param>
 		<expiration-cache>0</expiration-cache>
 		<supports>

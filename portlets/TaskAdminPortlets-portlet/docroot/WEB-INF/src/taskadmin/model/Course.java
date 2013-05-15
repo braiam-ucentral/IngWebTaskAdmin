@@ -84,8 +84,6 @@ public class Course implements Serializable {
 		em.close();
 		emf.close();
 	}
-
-	
 	
 	public static void removeByCode(String code) {
 		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();

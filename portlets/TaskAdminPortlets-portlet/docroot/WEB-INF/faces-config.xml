@@ -10,7 +10,7 @@
 		<phase-listener>com.liferay.faces.util.lifecycle.DebugPhaseListener</phase-listener>
 	</lifecycle>
 	
-	
+	<!-- ADMIN COURSES -->
 	<navigation-rule>
 		<from-view-id>/views/adminCourses/adminCourses.xhtml</from-view-id>
 		<navigation-case>
@@ -45,6 +45,44 @@
 			<to-view-id>/views/adminCourses/adminCourses.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	
+	<!-- MANAGE TEACHERS -->
+	<navigation-rule>
+		<from-view-id>/views/manageTeachers/manageTeachers.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create-teacher</from-outcome>
+			<to-view-id>/views/manageTeachers/createTeacher.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/views/manageTeachers/manageTeachers.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edit-teacher</from-outcome>
+			<to-view-id>/views/manageTeachers/createTeacher.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/views/manageTeachers/manageTeachers.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>remove-success</from-outcome>
+			<to-view-id>/views/manageTeachers/manageTeachers.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/views/manageTeachers/createTeacher.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/views/manageTeachers/manageTeachers.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
 	
 	
 </faces-config>
