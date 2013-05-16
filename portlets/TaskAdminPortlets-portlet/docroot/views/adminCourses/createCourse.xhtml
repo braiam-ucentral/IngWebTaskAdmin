@@ -41,6 +41,17 @@
 				<p:calendar value="#{manageCoursesBean.course.endDate}" id="popupButtonEndDate" showOn="button" />
 				
 				
+				<h:outputLabel value="Teacher" />
+				<p:selectOneMenu value="#{manageCoursesBean.teacherId}" >
+					<f:selectItem itemLabel="Select One" itemValue="" />
+					<f:selectItems
+						var="teacher"
+						value="#{manageTeachersBean.findAll()}" 
+						itemLabel="#{teacher.name}"
+						itemValue="#{teacher.id}"/>
+				</p:selectOneMenu>
+
+
 
 				<f:facet name="footer">
 					<p:commandButton

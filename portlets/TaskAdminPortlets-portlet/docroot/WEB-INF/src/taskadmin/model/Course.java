@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -32,6 +33,9 @@ public class Course implements Serializable {
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
+	
+	@OneToOne
+	private Teacher teacher;
 
 	public Course() {
 	}
@@ -72,17 +76,25 @@ public class Course implements Serializable {
 	
 
 	public void save() {
+		
 		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
 		EntityManager em = emf.createEntityManager();
 
+		try{
 		EntityTransaction tx = em.getTransaction();
 
 		tx.begin();
 		em.merge(this);
+		
 		tx.commit();
+		} catch(Exception e){
+			System.out.println(e);
+		} finally {
 
-		em.close();
-		emf.close();
+			em.close();
+			emf.close();			
+		}
+
 	}
 	
 	public static void removeByCode(String code) {
@@ -137,6 +149,15 @@ public class Course implements Serializable {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
 	}
 
 	@Override

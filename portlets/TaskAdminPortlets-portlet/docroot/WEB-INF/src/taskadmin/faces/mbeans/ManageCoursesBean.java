@@ -8,6 +8,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import taskadmin.model.Course;
+import taskadmin.model.Teacher;
 
 @ManagedBean
 @RequestScoped
@@ -17,8 +18,10 @@ public class ManageCoursesBean {
 	private String code = null;
 	
 	private String mode = "new";
+	private String teacherId;
 	
 	private Course course = new Course();
+	
 	
 	
 	public ManageCoursesBean() {
@@ -35,6 +38,7 @@ public class ManageCoursesBean {
 	
 
 	public String saveCourse(){
+		course.setTeacher(Teacher.findById(teacherId));
 		course.save();
 		return "success";
 	}
@@ -70,5 +74,15 @@ public class ManageCoursesBean {
 	public void setMode(String mode) {
 		this.mode = mode;
 	}
+
+	public String getTeacherId() {
+		return teacherId;
+	}
+
+	public void setTeacherId(String teacherId) {
+		this.teacherId = teacherId;
+	}
+	
+	
 	
 }
