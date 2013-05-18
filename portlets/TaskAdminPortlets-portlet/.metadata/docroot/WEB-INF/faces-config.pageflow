@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13652676275000" configfile="/TaskAdminPortlets-portlet/docroot/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="views/manageCourses/manageCourses.xhtml" id="pf13653702380706" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" outlinks="pf13653702380707 pf13685946455430 pf13685954141591" inlinks="pf13653736240989 pf13685946455430" path="/views/manageCourses/manageCourses.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="views/manageCourses/manageCourses.xhtml" id="pf13653702380706" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf13653702380707 pf13685946455430 pf13685954141591 pf13688771629872" inlinks="pf13653736240989 pf13685946455430" path="/views/manageCourses/manageCourses.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="views/manageCourses/createCourse.xhtml" id="pf13653702380708" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf13653736240989" inlinks="pf13653702380707 pf13685954141591" path="/views/manageCourses/createCourse.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="views/manageTeachers/manageTeachers.xhtml" id="pf13686576782773" referenceLink="//@navigationRule.7/@navigationCase.0/@toViewId|" outlinks="pf13686576782774 pf13686576973159 pf136865772032913" inlinks="pf13686576973159 pf136865771673311" path="/views/manageTeachers/manageTeachers.xhtml"/>
   <nodes xsi:type="pageflow:PFPage" name="views/manageTeachers/createTeacher.xhtml" id="pf13686576782775" referenceLink="//@navigationRule.7/@fromViewId|" outlinks="pf136865771673311" inlinks="pf13686576782774 pf136865772032913" path="/views/manageTeachers/createTeacher.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="views/manageStudents/manageStudents.xhtml" id="pf13686649600810" referenceLink="//@navigationRule.8/@fromViewId|" outlinks="pf13686649600811 pf13686649600813 pf13686680600500" inlinks="pf13686649600811 pf13686649600814" path="/views/manageStudents/manageStudents.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="views/manageStudents/createStudent.xhtml" id="pf13686649600815" referenceLink="//@navigationRule.8/@navigationCase.0/@toViewId|" outlinks="pf13686649600814" inlinks="pf13686649600813 pf13686680600500" path="/views/manageStudents/createStudent.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="views/manageStudents/manageStudents.xhtml" id="pf13686649600810" referenceLink="//@navigationRule.11/@navigationCase.0/@toViewId|" outlinks="pf13686649600811 pf13686649600813 pf13686680600500" inlinks="pf13686649600811 pf13686649600814" path="/views/manageStudents/manageStudents.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="views/manageStudents/createStudent.xhtml" id="pf13686649600815" referenceLink="//@navigationRule.11/@fromViewId|" outlinks="pf13686649600814" inlinks="pf13686649600813 pf13686680600500" path="/views/manageStudents/createStudent.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="views/manageEnrollments/manageEnrollments.xhtml" id="pf13688771629873" referenceLink="//@navigationRule.3/@navigationCase.0/@toViewId|" inlinks="pf13688771629872" path="/views/manageEnrollments/manageEnrollments.xhtml"/>
   <links id="pf13653702380707" target="pf13653702380708" source="pf13653702380706" outcome="create-course"/>
   <links id="pf13653736240989" target="pf13653702380706" source="pf13653702380708" outcome="success"/>
   <links id="pf13685946455430" target="pf13653702380706" source="pf13653702380706" outcome="remove-success"/>
@@ -17,7 +18,8 @@
   </links>
   <links id="pf136865772032913" target="pf13686576782775" source="pf13686576782773" outcome="edit-teacher"/>
   <links id="pf13686649600811" target="pf13686649600810" source="pf13686649600810" outcome="remove-success"/>
-  <links id="pf13686649600813" target="pf13686649600815" source="pf13686649600810" outcome="edit-student"/>
+  <links id="pf13686649600813" target="pf13686649600815" source="pf13686649600810" outcome="create-student"/>
   <links id="pf13686649600814" target="pf13686649600810" source="pf13686649600815" outcome="success"/>
-  <links id="pf13686680600500" target="pf13686649600815" source="pf13686649600810" outcome="create-student"/>
+  <links id="pf13686680600500" target="pf13686649600815" source="pf13686649600810" outcome="edit-student"/>
+  <links id="pf13688771629872" target="pf13688771629873" source="pf13653702380706" outcome="manage-enrollments"/>
 </pageflow:Pageflow>

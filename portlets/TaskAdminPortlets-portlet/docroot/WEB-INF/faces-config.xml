@@ -39,12 +39,22 @@
 	
 	
 	<navigation-rule>
+		<from-view-id>/views/manageCourses/manageCourses.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>manage-enrollments</from-outcome>
+			<to-view-id>/views/manageEnrollments/manageEnrollments.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
 		<from-view-id>/views/manageCourses/createCourse.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/views/manageCourses/manageCourses.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	
+	
 	
 	
 	<!-- MANAGE TEACHERS -->

@@ -4,15 +4,22 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
+import javax.persistence.Query;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import taskadmin.util.FacesUtil;
 import taskadmin.util.PersistenceUtil;
+
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+import com.liferay.portal.util.PortalUtil;
 
 @Entity
 public class Course implements Serializable {
@@ -34,6 +41,10 @@ public class Course implements Serializable {
 	private Date endDate;
 	
 	private long teacherId;
+	
+	@ElementCollection
+	private List<Long> studentIds;
+	
 
 	public Course() {
 	}
@@ -66,6 +77,26 @@ public class Course implements Serializable {
 		@SuppressWarnings("unchecked")
 		List<Course> courseList = em.createQuery("SELECT c FROM Course c")
 				.getResultList();
+
+		em.close();
+		emf.close();
+		return courseList;
+	}
+	
+	public static List<Course> findByCurrentTeacher() throws PortalException, SystemException{
+		
+		long currentTeacherId = PortalUtil.getUserId(FacesUtil.getPortletRequest());
+		
+		EntityManagerFactory emf = PersistenceUtil.createEntityManagerFactory();
+		EntityManager em = emf.createEntityManager();
+
+		
+		Query query = em.createQuery("SELECT c FROM Course c WHERE c.teacherId = :teacherId");
+		query.setParameter("teacherId", currentTeacherId);
+		
+		@SuppressWarnings("unchecked")
+		List<Course> courseList = (List<Course>)query.getResultList();
+		
 
 		em.close();
 		emf.close();
@@ -157,6 +188,15 @@ public class Course implements Serializable {
 
 	public void setTeacherId(long teacherId) {
 		this.teacherId = teacherId;
+	}
+	
+
+	public List<Long> getStudentIds() {
+		return studentIds;
+	}
+
+	public void setStudentIds(List<Long> studentIds) {
+		this.studentIds = studentIds;
 	}
 
 	@Override

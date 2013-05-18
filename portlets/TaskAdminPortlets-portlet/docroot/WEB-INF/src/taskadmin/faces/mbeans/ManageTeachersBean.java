@@ -6,16 +6,13 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import taskadmin.util.FacesUtil;
+import taskadmin.util.LiferayUtil;
 import taskadmin.util.RoleNames;
 
 import com.liferay.portal.kernel.exception.PortalException;
 import com.liferay.portal.kernel.exception.SystemException;
-import com.liferay.portal.model.Role;
 import com.liferay.portal.model.User;
-import com.liferay.portal.service.RoleLocalServiceUtil;
 import com.liferay.portal.service.UserLocalServiceUtil;
-import com.liferay.portal.util.PortalUtil;
 
 
 @ManagedBean
@@ -40,7 +37,7 @@ public class ManageTeachersBean {
 //	
 	public List<User> findAll() throws PortalException, SystemException{
 		
-		long[] userIds = UserLocalServiceUtil.getRoleUserIds(getTeacherRoleId());
+		long[] userIds = UserLocalServiceUtil.getRoleUserIds(LiferayUtil.getRoleId(RoleNames.TEACHER));
 		
 		List<User> userList = new ArrayList<User>();
 		
@@ -55,11 +52,7 @@ public class ManageTeachersBean {
 		return UserLocalServiceUtil.getUser(teacherId);
 	}
 	
-	protected long getTeacherRoleId() throws PortalException, SystemException{
-		long companyId = PortalUtil.getCompanyId(FacesUtil.getPortletRequest());
-		Role role = RoleLocalServiceUtil.getRole(companyId, RoleNames.TEACHER);
-		return role.getRoleId();
-	}
+	
 //
 //
 //	public String saveTeacher(){
