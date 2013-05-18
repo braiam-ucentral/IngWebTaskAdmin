@@ -1,5 +1,6 @@
 package taskadmin.faces.mbeans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -7,8 +8,11 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import com.liferay.portal.kernel.exception.PortalException;
+import com.liferay.portal.kernel.exception.SystemException;
+
+import taskadmin.dto.CourseDTO;
 import taskadmin.model.Course;
-import taskadmin.model.Teacher;
 
 @ManagedBean
 @RequestScoped
@@ -18,7 +22,6 @@ public class ManageCoursesBean {
 	private String code = null;
 	
 	private String mode = "new";
-	private String teacherId;
 	
 	private Course course = new Course();
 	
@@ -32,13 +35,18 @@ public class ManageCoursesBean {
 		}
 	}
 
-	public List<Course> findAll(){
-		return Course.findAll();
+	public List<CourseDTO> findAll() throws PortalException, SystemException{
+		List<Course> courseList = Course.findAll();
+		List<CourseDTO> courseDTOList = new ArrayList<CourseDTO>();
+		
+		for(Course course : courseList){
+			courseDTOList.add(CourseDTO.from(course));
+		}
+		return courseDTOList;
 	}
 	
 
 	public String saveCourse(){
-		course.setTeacher(Teacher.findById(teacherId));
 		course.save();
 		return "success";
 	}
@@ -75,14 +83,6 @@ public class ManageCoursesBean {
 		this.mode = mode;
 	}
 
-	public String getTeacherId() {
-		return teacherId;
-	}
-
-	public void setTeacherId(String teacherId) {
-		this.teacherId = teacherId;
-	}
-	
 	
 	
 }

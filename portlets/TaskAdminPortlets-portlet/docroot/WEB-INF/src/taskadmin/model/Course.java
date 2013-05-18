@@ -9,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -34,8 +33,7 @@ public class Course implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date endDate;
 	
-	@OneToOne
-	private Teacher teacher;
+	private long teacherId;
 
 	public Course() {
 	}
@@ -152,12 +150,13 @@ public class Course implements Serializable {
 	}
 
 	
-	public Teacher getTeacher() {
-		return teacher;
+
+	public long getTeacherId() {
+		return teacherId;
 	}
 
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
+	public void setTeacherId(long teacherId) {
+		this.teacherId = teacherId;
 	}
 
 	@Override

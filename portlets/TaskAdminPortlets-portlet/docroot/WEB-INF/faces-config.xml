@@ -12,37 +12,37 @@
 	
 	<!-- ADMIN COURSES -->
 	<navigation-rule>
-		<from-view-id>/views/adminCourses/adminCourses.xhtml</from-view-id>
+		<from-view-id>/views/manageCourses/manageCourses.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>create-course</from-outcome>
-			<to-view-id>/views/adminCourses/createCourse.xhtml</to-view-id>
+			<to-view-id>/views/manageCourses/createCourse.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
 	
 	<navigation-rule>
-		<from-view-id>/views/adminCourses/adminCourses.xhtml</from-view-id>
+		<from-view-id>/views/manageCourses/manageCourses.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>edit-course</from-outcome>
-			<to-view-id>/views/adminCourses/createCourse.xhtml</to-view-id>
+			<to-view-id>/views/manageCourses/createCourse.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
 	
 	<navigation-rule>
-		<from-view-id>/views/adminCourses/adminCourses.xhtml</from-view-id>
+		<from-view-id>/views/manageCourses/manageCourses.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>remove-success</from-outcome>
-			<to-view-id>/views/adminCourses/adminCourses.xhtml</to-view-id>
+			<to-view-id>/views/manageCourses/manageCourses.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
 	
 	<navigation-rule>
-		<from-view-id>/views/adminCourses/createCourse.xhtml</from-view-id>
+		<from-view-id>/views/manageCourses/createCourse.xhtml</from-view-id>
 		<navigation-case>
 			<from-outcome>success</from-outcome>
-			<to-view-id>/views/adminCourses/adminCourses.xhtml</to-view-id>
+			<to-view-id>/views/manageCourses/manageCourses.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
@@ -80,6 +80,43 @@
 		<navigation-case>
 			<from-outcome>success</from-outcome>
 			<to-view-id>/views/manageTeachers/manageTeachers.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<!-- MANAGE STUDENTS -->
+	<navigation-rule>
+		<from-view-id>/views/manageStudents/manageStudents.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>create-student</from-outcome>
+			<to-view-id>/views/manageStudents/createStudent.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/views/manageStudents/manageStudents.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>edit-student</from-outcome>
+			<to-view-id>/views/manageStudents/createStudent.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/views/manageStudents/manageStudents.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>remove-success</from-outcome>
+			<to-view-id>/views/manageStudents/manageStudents.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+	
+	
+	<navigation-rule>
+		<from-view-id>/views/manageStudents/createStudent.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>success</from-outcome>
+			<to-view-id>/views/manageStudents/manageStudents.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 	
