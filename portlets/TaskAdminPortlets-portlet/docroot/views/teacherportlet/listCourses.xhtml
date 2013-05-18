@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<f:view xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	<h:head />
+	<h:body>
+
+		<h:form>
+			<p:dataTable var="course"
+				value="#{manageCoursesBean.findByCurrentTeacher()}">
+				<p:column headerText="Code">
+					<h:outputText value="#{course.code}" />
+				</p:column>
+				<p:column headerText="Name">
+					<h:outputText value="#{course.name}" />
+				</p:column>
+				<p:column headerText="Capacity">
+					<h:outputText value="#{course.capacity}" />
+				</p:column>
+				<p:column headerText="Start Date">
+					<h:outputText value="#{course.startDate}" />
+				</p:column>
+				<p:column headerText="End Date">
+					<h:outputText value="#{course.endDate}" />
+				</p:column>
+
+				<p:column headerText="Actions">
+					
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</h:body>
+</f:view>
